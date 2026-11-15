@@ -9,6 +9,7 @@ import java.util.Scanner;
 public class Wordle {
     private static final String DICTIONARY_FILE = "words_ru.txt";
     private static final String LOG_FILE = "wordle.log";
+
     public static void main(String[] args) {
         try (PrintWriter log = new PrintWriter(new FileWriter(LOG_FILE, StandardCharsets.UTF_8), true)) {
             try {
@@ -49,7 +50,7 @@ public class Wordle {
                 System.out.println("Подсказка: попробуйте слово " + suggestion);
                 continue;
             }
-            try{
+            try {
                 String hint = game.makeMove(input);
                 System.out.println("> " + hint);
             } catch (WordleGameException e) {

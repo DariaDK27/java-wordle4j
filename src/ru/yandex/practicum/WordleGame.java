@@ -126,7 +126,7 @@ public class WordleGame {
         char[] result = new char[length];
         boolean[] used = new boolean[length];
 
-        for (int i = 0; i < length; i ++) {
+        for (int i = 0; i < length; i++) {
             if (guess.charAt(i) == answer.charAt(i)) {
                 result[i] = '+';
                 used[i] = true;

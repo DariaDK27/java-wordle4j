@@ -47,5 +47,4 @@ public class WordleDictionary {
         }
         return word.trim().toLowerCase().replace('ё', 'е');
     }
-
 }

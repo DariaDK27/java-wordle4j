@@ -11,6 +11,7 @@ import java.util.List;
 public class WordleDictionaryLoader {
     public static final int WORD_LENGTH = 5;
     private final PrintWriter log;
+
     public WordleDictionaryLoader(PrintWriter log) {
         this.log = log;
     }
