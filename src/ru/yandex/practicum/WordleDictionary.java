@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class WordleDictionary {
 
-    private List<String> words;
+    private final List<String> words;
     private final Set<String> wordsSet;
     private final PrintWriter log;
     private final Random random = new Random();
@@ -34,7 +34,7 @@ public class WordleDictionary {
 
     public String getRandomWord() {
         if (words.isEmpty()) {
-            throw new IllegalStateException("Словарь пуст, выбрать слово невозможно");
+            throw new EmptyDictionaryException("Словарь пуст, выбрать слово невозможно");
         }
         String word = words.get(random.nextInt(words.size()));
         log.println("Выбрано случайное слово: " + word);

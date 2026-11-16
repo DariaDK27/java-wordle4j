@@ -62,7 +62,7 @@ public class WordleGameTest {
 
     @Test
     void inputIsNormalized() throws WordleGameException {
-        game.makeMove("  КОТЁЛ ");
+        game.makeMove(WordleDictionary.normalize("  КОТЁЛ "));
 
         assertEquals(5, game.getSteps());
     }
@@ -103,7 +103,7 @@ public class WordleGameTest {
     @Test
     void moveAfterGameEndThrowsException() throws WordleGameException {
         game.makeMove("герой");
-        assertThrows(IllegalStateException.class, () -> game.makeMove("гонец"));
+        assertThrows(GameOverException.class, () -> game.makeMove("гонец"));
     }
 
     @Test

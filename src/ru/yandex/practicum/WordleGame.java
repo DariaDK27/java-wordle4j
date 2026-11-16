@@ -9,6 +9,11 @@ import java.util.Set;
 
 public class WordleGame {
     public static final int MAX_STEPS = 6;
+
+    private static final char HINT_CORRECT = '+';
+    private static final char HINT_WRONG_PLACE = '^';
+    private static final char HINT_ABSENT = '-';
+
     private final String answer;
     private int steps;
     private final WordleDictionary dictionary;
@@ -48,12 +53,10 @@ public class WordleGame {
         return won || steps == 0;
     }
 
-    public String makeMove(String input) throws WordleGameException {
+    public String makeMove(String word) throws WordleGameException {
         if (isFinished()) {
-            throw new IllegalStateException("Игра уже закончена, ход сделать нельзя");
+            throw new GameOverException("Игра уже закончена, ход сделать нельзя");
         }
-
-        String word = WordleDictionary.normalize(input);
 
         if (word.length() != WordleDictionaryLoader.WORD_LENGTH) {
             throw new InvalidWordException("Слово должно состоять из " + WordleDictionaryLoader.WORD_LENGTH + " букв");
@@ -92,7 +95,7 @@ public class WordleGame {
         }
 
         if (candidates.isEmpty()) {
-            throw new IllegalStateException("Не нашлось ни одного подходящего слова, хотя ответ должен подходить");
+            throw new NoSuitableWordException("Не нашлось ни одного подходящего слова, хотя ответ должен подходить");
 
         }
 

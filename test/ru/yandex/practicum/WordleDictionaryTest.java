@@ -41,7 +41,7 @@ public class WordleDictionaryTest {
     @Test
     void randomWordFromEmptyDictionaryThrowsException() {
         WordleDictionary empty = new WordleDictionary(new ArrayList<>(), log);
-        assertThrows(IllegalStateException.class, empty::getRandomWord);
+        assertThrows(EmptyDictionaryException.class, empty::getRandomWord);
     }
 
     @Test

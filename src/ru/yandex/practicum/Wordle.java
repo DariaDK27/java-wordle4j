@@ -44,14 +44,15 @@ public class Wordle {
                 break;
             }
             String input = scanner.nextLine();
+            String word = WordleDictionary.normalize(input);
 
-            if (WordleDictionary.normalize(input).isEmpty()) {
+            if (word.isEmpty()) {
                 String suggestion = game.suggestWord();
                 System.out.println("Подсказка: попробуйте слово " + suggestion);
                 continue;
             }
             try {
-                String hint = game.makeMove(input);
+                String hint = game.makeMove(word);
                 System.out.println("> " + hint);
             } catch (WordleGameException e) {
                 System.out.println(e.getMessage() + ". Попробуйте ещё раз.");
